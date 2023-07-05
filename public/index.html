@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
+	<script defer src = "./script.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	<!-- we would like a little emoji here -->
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚕</text></svg>">
@@ -12,43 +13,93 @@
 
 </head>
 <body>
-	<video autoplay muted loop>
-		<source src="sf.mp4" type="video/mp4" />
-	</video>
-	<div class="overlay"></div>
-   <div class="box">
-    <div class="container">
-		<header>Welcome to Navigo!</header>
+	<section class = "hidden">
+		<video autoplay muted loop>
+			<source src="scooter.mp4" type="video/mp4" />
+		</video>
+		<div class="overlay"></div>
+		<div class="box">
+			<div class =" intro">
+				Made for professionals by professionals
+			</div>
+		</div>
+  
+	</section>   
 
-        <div class="top">
-            <span>Lets create an account!</span>
-            <!-- <header>Lets c</header> -->
-        </div>
+	<section class = "hidden">
+		
+			<video autoplay muted loop>
+				<source src="pink.mp4" type="video/mp4" />
+			</video>
+			<div class="overlay"></div>
+			<div class="box">
+				<div class =" intro">
+					Getting to work has never been easier
+				</div>
+			</div>
+	</section>   
 
-        <div class="input-field">
-            <input type="text" class="input" placeholder="Username" id="">
-            <i class='bx bx-user' ></i>
-        </div>
+	<section class = "hidden">
+		<video autoplay muted loop>
+			<source src="relax.mp4" type="video/mp4" />
+		</video>
+		<div class="overlay"></div>
+		<div class="box">
+			<div class =" intro">
+				Relax and enjoy the ride
+			</div>
+		</div>
+	</section>
+	<section class="hidden">
+		<video autoplay muted loop>
+			<source src="destination.mp4" type="video/mp4" />
+		</video>
+		<div class="overlay"></div>
+		<div class="box">
+			<div class =" intro">
+				We'll get you there
+			</div>
+		</div>
+	</section>
+	<section class = "hidden">
+		<video autoplay muted loop>
+			<source src="sf.mp4" type="video/mp4" />
+		</video>
+		<div class="overlay"></div>
+		<div class="box">
+			<div class="container">
+				<header>Welcome to Navigo!</header>
 
-        <!-- <div class="input-field">
-            <input type="Password" class="input" placeholder="Password" id="">
-            <i class='bx bx-lock-alt'></i>
-        </div> -->
+				<div class="top">
+					<span>Lets create an account!</span>
+					<!-- <header>Lets c</header> -->
+				</div>
+					<div class="input-field">
+						<input type="text" class="input" placeholder="Username" id="">
+						<i class='bx bx-user' ></i>
+					</div>
+			
+					<div class="input-field">
+						<button class="submit"; onclick="window.location.href = './select.html'">Create account!</button>
+					</div>
 
-        <div class="input-field">
-            <input type="submit" class="submit" value="Create account!" id="">
-        </div>
+				<div class="two-col">
+					<div class="one">
+					<input type="checkbox" name="" id="check">
+					<label for="check"> Remember Me</label>
+					</div>
 
-        <div class="two-col">
-            <div class="one">
-               <input type="checkbox" name="" id="check">
-               <label for="check"> Remember Me</label>
-            </div>
-            <!-- <div class="two">
-                <label><a href="#">Forgot password?</a></label>
-            </div> -->
-        </div>
-    </div>
-</div>  
+				</div>
+			</div>
+		</div> 
+	</section> 
 </body>
+<script>
+	//get the button class and redirect to select.html
+	const submit = document.querySelector('.submit');
+	submit.addEventListener('click', () => {
+		window.location.href = 'select.html';
+	});
+
+</script>
 </html>
