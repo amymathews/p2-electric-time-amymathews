@@ -1,0 +1,8 @@
+Credits and References:
+
+https://stackoverflow.com/questions/3899865/can-you-display-html5-video-as-a-full-screen-background
+https://stackoverflow.com/questions/55683096/darken-video-background
+https://www.ludiflex.xyz/transparent-login-form/
+https://stackoverflow.com/questions/5802183/image-over-a-video-html5
+https://www.youtube.com/watch?v=5z4sk3zOwnQ&t=141s
+https://developers.google.com/maps/documentation/javascript/examples/directions-simple?hl=en
