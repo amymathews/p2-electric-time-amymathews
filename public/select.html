@@ -14,8 +14,6 @@
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-      <!-- Theme style -->
-      <script src="script.js"></script>
 
       <!-- Font Awesome CDN -->
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
@@ -25,9 +23,9 @@
 
       <!-- Animate CSS CDN -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
-
-      <!-- Custom CSS -->
-      <link rel="stylesheet" href="/assets/css/style.css">
+      
+      <!--Maps-->
+      <script type="module" src="./maps.js"></script>
 
 
 </head>
@@ -47,32 +45,199 @@
     
           <a class="nav-item nav-link " href="index.html">about</a>
     
-          <a class="nav-item nav-link " href="/blog/">blog</a>
-    
-          <a class="nav-item nav-link " href="/notes/">notes</a>
-    
-          <a class="nav-item nav-link " href="/projects/">projects</a>
-    
-          <a class="nav-item nav-link " href="/experience/">experience</a>
-    
-          <a class="nav-item nav-link " href="https://drive.google.com/file/d/1nxD0JIPxPSoM7pxtSQ-0P4EegFgnIoks/view?usp=sharing" target="_blank">resume</a>
-    
-          
-    
+          <a class="nav-item nav-link " href="/blog/">account</a>
           <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
         </div>
       </div>
     
     </nav>
+    <!--we are going to make an question here asking how many miles the person is going to travel
+    and then give and option to what choice of transportation they want to take (this will be a drop down menu) -->
 
-    <div class="intro2">
-        "Welcome Wally to the world of Navigo. We are here to help you get to work on time."
-    </div>
-    <div class = "introsub">
-        Where we headed today?
+    <div id="greeting">
+      <header>Welcome to Navigo <span id="username" class="new-span"></span>! </header>
+
+  </div>
+
+    <div class="box">
+      <div class="container">
+        <header>Electric Transport Time Calculator</header>
+        
+        <div>
+          <label for="transport">Type of Transport:</label>
+          <select id="transport" class="input-field">
+            <option value="Walking">Walking</option>
+            <option value="Evolve Bamboo GTR Skateboard">Evolve Bamboo GTR Skateboard</option>
+            <option value="Segway Ninebot S-PLUS">Segway Ninebot S-PLUS</option>
+            <option value="Razor Metro HD Scooter">Razor Metro HD Scooter</option>
+            <option value="Hovertrax Hoverboard">Hovertrax Hoverboard</option>
+          </select>
+        </div>
+        
+        <div>
+          <label for="distance">Distance to Travel (in miles):</label>
+          <input type="number" id="distance" class="input-field">
+        </div>
+        <br>
+        
+        <button onclick="calculateTime()" class="submit">Calculate Time</button>
+        
+        <div id="result"></div>
+    
+        <header>Comparison Table</header>
+        <table id="comparisonTable">
+          <thead>
+            <tr>
+              <th>Type of Transport</th>
+              <th>Speed (MPH)</th>
+              <th>Range (miles)</th>
+              <th>Estimated Time (minutes)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Walking</td>
+              <td>3.1</td>
+              <td>30</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>Evolve Bamboo GTR Skateboard</td>
+              <td>27</td>
+              <td>31</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>Segway Ninebot S-PLUS</td>
+              <td>12</td>
+              <td>22</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>Razor Metro HD Scooter</td>
+              <td>15.5</td>
+              <td>12</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>Hovertrax Hoverboard</td>
+              <td>9</td>
+              <td>6</td>
+              <td>-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
+    <header>Different Travel routes!</header>
+    <div class = "box">
+      <div class="container">
+        <div id="floating-panel">
+          <div id="inputs">
+            <div>
+              <input type = "text" id="from" placeholder="Origin" />
+            </div>
+          </div>
+
+          <div id="inputs">
+            <div>
+              <input type = "text" id="to" placeholder="Destination" />
+            </div>
+          </div>
+          <b>Mode of Travel: </b>
+          <select id="mode">
+            <option value="DRIVING">Driving</option>
+            <option value="WALKING">Walking</option>
+            <option value="BICYCLING">Bicycling</option>
+            <option value="TRANSIT">Transit</option>
+          </select>
+        </div>
+        <div id="map"></div>
+    </div>
+  </div>
+
+    <!-- 
+      The `defer` attribute causes the callback to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises.
+      See https://developers.google.com/maps/documentation/javascript/load-maps-js-api
+      for more information.
+      -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_5jlslmuzyN4b5slgl4e_dWXjkOcXtfg&callback=initMap&v=weekly"
+      defer
+    ></script>
+
+    <script>
+      // Retrieve the username from localStorage
+      var username = localStorage.getItem('username');
+  
+      // Set the username in the greeting message
+      document.getElementById('username').textContent = username;
+    </script>
+ 
 </body>
+
 <script>
+    function calculateTime() {
+      var transportSelect = document.getElementById("transport");
+      var distanceInput = document.getElementById("distance");
+      var resultDiv = document.getElementById("result");
+      var comparisonTable = document.getElementById("comparisonTable");
+
+      var transport = transportSelect.value;
+      var distance = distanceInput.value;
+      
+      var speeds = {
+        "Walking": 3.1,
+        "Evolve Bamboo GTR Skateboard": 27,
+        "Segway Ninebot S-PLUS": 12,
+        "Razor Metro HD Scooter": 15.5,
+        "Hovertrax Hoverboard": 9
+      };
+
+      var ranges = {
+        "Walking": 30,
+        "Evolve Bamboo GTR Skateboard": 31,
+        "Segway Ninebot S-PLUS": 22,
+        "Razor Metro HD Scooter": 12,
+        "Hovertrax Hoverboard": 6
+      };
+
+      var speed = speeds[transport];
+      var range = ranges[transport];
+
+      if (speed && range) {
+        var time = Math.round(distance / speed * 60);
+        resultDiv.textContent = "Traveling " + distance + " miles using " + transport + " will result in a " + time + " minute travel time.";
+        
+        // Update comparison table
+        var rows = comparisonTable.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+        for (var i = 0; i < rows.length; i++) {
+          var row = rows[i];
+          var transportCell = row.getElementsByTagName("td")[0];
+          var speedCell = row.getElementsByTagName("td")[1];
+          var rangeCell = row.getElementsByTagName("td")[2];
+          var timeCell = row.getElementsByTagName("td")[3];
+          
+          var transportName = transportCell.textContent;
+          var transportSpeed = speeds[transportName];
+          
+          if (transportSpeed) {
+            var transportTime = Math.round(distance / transportSpeed * 60);
+            timeCell.textContent = transportTime;
+          }
+          
+          // Remove selected option from table
+          if (transportName === transport) {
+            row.style.display = "none";
+          }
+        }
+      } else {
+        resultDiv.textContent = "Invalid transport selected.";
+      }
+}
 </script>
+
 </html>

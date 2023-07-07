@@ -10,10 +10,10 @@ const observer = new IntersectionObserver((entries) => {
     });
   });
   
-  const hiddenVals = document.querySelectorAll('.hidden');
-  hiddenVals.forEach((el) => observer.observe(el));
+const hiddenVals = document.querySelectorAll('.hidden');
+hiddenVals.forEach((el) => observer.observe(el));
 
-  const STORAGE_KEY = "theme";
+const STORAGE_KEY = "theme";
 const THEME_ATTR  = "data-theme";
 const QUERY_KEY   = "(prefers-color-scheme: dark)";
 

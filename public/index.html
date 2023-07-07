@@ -13,6 +13,9 @@
 
 </head>
 <body>
+	
+	<nav><img src="./images/logo.jpg"></nav>
+	
 	<section class = "hidden">
 		<video autoplay muted loop>
 			<source src="scooter.mp4" type="video/mp4" />
@@ -72,15 +75,15 @@
 
 				<div class="top">
 					<span>Lets create an account!</span>
-					<!-- <header>Lets c</header> -->
 				</div>
+			
 					<div class="input-field">
-						<input type="text" class="input" placeholder="Username" id="">
-						<i class='bx bx-user' ></i>
+						<input type="text" class="input" placeholder="Username" id="username">
+						<i class='bx bx-user'></i>
 					</div>
 			
 					<div class="input-field">
-						<button class="submit"; onclick="window.location.href = './select.html'">Create account!</button>
+						<button class="submit" onclick="saveUsernameAndRedirect()">Create account!</button>
 					</div>
 
 				<div class="two-col">
@@ -96,10 +99,17 @@
 </body>
 <script>
 	//get the button class and redirect to select.html
-	const submit = document.querySelector('.submit');
-	submit.addEventListener('click', () => {
-		window.location.href = 'select.html';
-	});
+	// const submit = document.querySelector('.submit');
+	// submit.addEventListener('click', () => {
+	// 	window.location.href = 'select.html';
+	// });
+	function saveUsernameAndRedirect() {
+			console.log('i am here');
+            var usernameInput = document.getElementById('username');
+            var username = usernameInput.value;
+            localStorage.setItem('username', username);
+            window.location.href = 'select.html';
+    }
 
 </script>
 </html>
